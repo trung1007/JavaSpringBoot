@@ -1,12 +1,38 @@
 package CaoTrung.springProject.student;
 
+
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+
+
+@Entity
+@Table(name = "student")
 public class Student {
+
+
+    @Id
+    @GeneratedValue
+    private Integer id;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
+
+    @Column(unique=true)
     private String email;
+
+    @Transient
     private int age;
 
     public Student(String firstName, String lastName, LocalDate dateOfBirth, String email, int age) {
