@@ -1,5 +1,6 @@
 package CaoTrung.springProject.student;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,7 +11,8 @@ import java.util.Optional;
 public class StudentController {
     private StudentService service;
 
-    public StudentController(StudentService service) {
+    public StudentController(
+         @Qualifier("DBStudentService") StudentService service) {
         this.service = service;
     }
 

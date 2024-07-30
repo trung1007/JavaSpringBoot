@@ -4,7 +4,7 @@ package CaoTrung.springProject.student;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-
+import java.time.Period;
 
 
 @Entity
@@ -32,7 +32,7 @@ public class Student {
     @Column(unique=true)
     private String email;
 
-    @Transient
+    @Column
     private int age;
 
     public Student(String firstName, String lastName, LocalDate dateOfBirth, String email, int age) {
@@ -79,7 +79,7 @@ public class Student {
     }
 
     public int getAge() {
-        return age;
+        return Period.between(dateOfBirth, LocalDate.now()).getYears();
     }
 
     public void setAge(int age) {
